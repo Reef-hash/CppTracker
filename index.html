@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CppTracker - LearnCpp Progress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <header class="titlebar">
+      <div class="title-left">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <h1>CppTracker 2002 Edition</h1>
+      <div class="title-right">learncpp://progress</div>
+    </header>
+
+    <section class="profile-panel">
+      <label for="studentNameInput" class="profile-label">Student Name</label>
+      <input id="studentNameInput" class="profile-input" type="text" maxlength="60" placeholder="Type your full name for certificates" />
+      <p class="profile-note" id="studentNameNote">Your name is saved in this browser and used for certificates.</p>
+    </section>
+
+    <section class="status-panel">
+      <div class="stat-card">
+        <p class="label">Overall Progress</p>
+        <p class="value" id="progressPercent">0%</p>
+      </div>
+      <div class="stat-card">
+        <p class="label">Completed Chapters</p>
+        <p class="value"><span id="completedCount">0</span>/<span id="totalCount">0</span></p>
+      </div>
+      <div class="stat-card">
+        <p class="label">Completed Lessons</p>
+        <p class="value"><span id="completedLessons">0</span>/<span id="totalLessons">0</span></p>
+      </div>
+      <div class="stat-card highlight">
+        <p class="label">Current Level</p>
+        <p class="value" id="levelBadge">Beginner</p>
+      </div>
+      <div class="stat-card action-box">
+        <button id="checkAllBtn" class="retro-btn">Check All</button>
+        <button id="resetBtn" class="retro-btn danger">Reset</button>
+      </div>
+    </section>
+
+    <section class="meter-wrap" aria-label="Progress bar">
+      <div class="meter" id="meterBar"></div>
+    </section>
+
+    <section class="legend">
+      <p><strong>Level Scale:</strong> Beginner (0-34%), Intermediate (35-69%), Advanced (70-100%)</p>
+      <p><strong>Unlock Rule:</strong> Complete all Beginner chapters to unlock Intermediate, then complete Intermediate to unlock Advanced.</p>
+    </section>
+
+    <section class="syllabus-wrap">
+      <div class="syllabus-head">
+        <h2>LearnCpp Syllabus (Chapter + Lesson Tracking)</h2>
+        <p>Mark completed lessons, or use chapter checkbox to complete a full chapter.</p>
+      </div>
+      <div id="levelList" class="level-list"></div>
+    </section>
+
+    <section class="platforms-wrap" aria-label="Learning platforms">
+      <p class="platforms-title">Learning Stack</p>
+      <div class="platform-grid">
+        <a class="platform-chip" href="https://www.learncpp.com/" target="_blank" rel="noopener noreferrer" aria-label="LearnCpp">
+          <span class="platform-icon platform-icon-cpp">
+            <img src="https://cdn.simpleicons.org/cplusplus/FFFFFF" alt="C++" />
+          </span>
+          <span class="platform-name">LearnCpp</span>
+        </a>
+        <a class="platform-chip" href="https://www.udemy.com/" target="_blank" rel="noopener noreferrer" aria-label="Udemy">
+          <span class="platform-icon platform-icon-udemy">
+            <img src="https://cdn.simpleicons.org/udemy/FFFFFF" alt="Udemy" />
+          </span>
+          <span class="platform-name">Udemy</span>
+        </a>
+        <a class="platform-chip" href="https://www.coursera.org/" target="_blank" rel="noopener noreferrer" aria-label="Coursera">
+          <span class="platform-icon platform-icon-coursera">
+            <img src="https://cdn.simpleicons.org/coursera/FFFFFF" alt="Coursera" />
+          </span>
+          <span class="platform-name">Coursera</span>
+        </a>
+        <a class="platform-chip" href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <span class="platform-icon platform-icon-github">
+            <img src="https://cdn.simpleicons.org/github/FFFFFF" alt="GitHub" />
+          </span>
+          <span class="platform-name">GitHub</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <section id="certificateSheet" class="certificate-sheet" aria-hidden="true">
+    <div class="cert-shell">
+      <div class="cert-watermark" aria-hidden="true">C++</div>
+
+      <header class="cert-header">
+        <div class="cert-brand">
+          <span class="cert-logo" aria-hidden="true">
+            <img class="cert-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" alt="" />
+          </span>
+          <div class="cert-brand-copy">
+            <p class="cert-org">Global C++ Institute</p>
+            <p class="cert-org-sub">Professional Software Engineering Certification</p>
+          </div>
+        </div>
+        <div class="cert-header-meta">
+          <p class="cert-header-label">Official Credential</p>
+          <p class="cert-header-code" id="certLevelCode">CPA</p>
+        </div>
+      </header>
+
+      <main class="cert-main">
+        <p class="cert-kicker">Certificate of Achievement</p>
+        <h2 id="certStudentName" class="cert-student">John Doe</h2>
+        <p class="cert-lead">has successfully demonstrated the required competency and practical proficiency in</p>
+        <h3 id="certProgramName" class="cert-program">CPA - C++ Certified Associate Programmer</h3>
+      </main>
+
+      <section class="cert-lower">
+        <article class="cert-signature">
+          <p class="cert-sign-script" aria-hidden="true">Abdul Bari</p>
+          <div class="cert-sign-line"></div>
+          <p class="cert-sign-name">Abdul Bari</p>
+          <p class="cert-sign-role">Director of Certification</p>
+        </article>
+
+        <article class="cert-seal-block" aria-label="Program seal">
+          <div class="cert-seal-ring">
+            <div class="cert-seal-inner">
+              <span class="cert-seal-label">Certified</span>
+              <span class="cert-seal-code">C++</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="cert-meta-block">
+          <p id="certIssueDate" class="cert-meta-line">Issued: 26 May 2026</p>
+          <p id="certIdLine" class="cert-meta-line">Certificate ID: CPP-CPA-0000</p>
+          <p class="cert-meta-note">Verification available through institute credential registry.</p>
+        </article>
+
+        <article class="cert-qr-block" aria-label="Verification QR">
+          <div class="cert-qr" aria-hidden="true"></div>
+          <p class="cert-qr-label">Scan to verify</p>
+        </article>
+      </section>
+
+      <footer class="cert-footer">
+        <p class="cert-footer-line">This credential is awarded for demonstrated mastery of modern C++ fundamentals and applied programming practices.</p>
+      </footer>
+    </div>
+  </section>
+
+  <template id="levelBlockTemplate">
+    <section class="level-block">
+      <header class="level-head">
+        <div>
+          <h3 class="level-title"></h3>
+          <p class="level-subtitle"></p>
+        </div>
+        <div class="level-tools">
+          <p class="level-status"></p>
+          <button class="retro-btn cert-btn" type="button">Download Certificate</button>
+        </div>
+      </header>
+      <p class="level-lock-msg"></p>
+      <div class="chapter-list"></div>
+    </section>
+  </template>
+
+  <template id="chapterCardTemplate">
+    <article class="chapter-item">
+      <div class="chapter-top">
+        <label class="chapter-check">
+          <input type="checkbox" class="chapter-checkbox" />
+          <span class="checkmark"></span>
+        </label>
+        <div class="chapter-text">
+          <p class="chapter-id"></p>
+          <p class="chapter-title"></p>
+        </div>
+        <p class="chapter-progress"></p>
+      </div>
+      <ul class="lesson-list"></ul>
+    </article>
+  </template>
+
+  <template id="lessonItemTemplate">
+    <li class="lesson-item">
+      <label class="lesson-check">
+        <input type="checkbox" class="lesson-checkbox" />
+        <span class="checkmark"></span>
+      </label>
+      <span class="lesson-text"></span>
+    </li>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
